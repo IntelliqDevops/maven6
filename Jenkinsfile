@@ -25,38 +25,6 @@ pipeline
                 }
             }
         }
-        stage('Cont Deployment')
-        {
-            steps
-            {
-                script
-                {
-                    cicd.deployTomcat("DeclarativePipelinewithSharedLibraries","172.31.29.188","testapp")
-                }
-            }
-        }
-        stage('Cont Testing')
-        {
-            steps
-            {
-                script
-                {
-                    cicd.gitDownload("FunctionalTesting")
-                    cicd.runSelenium("DeclarativePipelinewithSharedLibraries")
-                }
-            }
-            
-        }
-        stage('Cont Delivery')
-        {
-            steps
-            {
-                script
-                {
-                    cicd.deployTomcat("DeclarativePipelinewithSharedLibraries","172.31.17.234","prodapp")
-                }
-            }
-        }
         
     }
 }
